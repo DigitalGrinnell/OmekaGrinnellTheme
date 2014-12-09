@@ -53,12 +53,13 @@
         <h3>Origins</h3>
 
         <h4><i>continent - region</i></h4>
-        <p><?php echo metadata('item', array('Dublin Core', 'Coverage'), array('delimiter' => ' - ')); ?>
+        <p><?php echo metadata('item', array('Dublin Core', 'Spatial Coverage'), array('delimiter' => ' - ')); ?> - 
+	<?php echo metadata('item', array('Dublin Core', 'Source'), array('delimiter' => ' - ')); ?>
 
 </p>
 
         <h4><i>nation - formation</i></h4>
-        <p><?php echo metadata('item', array('Dublin Core', 'Spatial Coverage'), array('delimiter' => ', ')); ?> - 
+        <p><?php echo metadata('item', array('Dublin Core', 'Coverage'), array('delimiter' => ', ')); ?> - 
         <?php echo metadata('item', array('Dublin Core', 'Type'), array('delimiter' => ', ')); ?>
 </p>
     
@@ -79,6 +80,7 @@
         <!-- The following IF-ELSEIF-ELSEIF-ELSEIF sections checks the music instrument's category, then displays the features for only that category -->
 <?php $category = metadata('item', array('Item Type Metadata', 'Category')); ?>
 <?php if ($category == 'aerophone'): ?>
+	{
 	<h4>basic shape of air cavity encasement</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'basic shape of air cavity encasement')); ?></p>
 	<h4>source and direction of airstream</h4>
@@ -91,8 +93,9 @@
 	<p><?php echo metadata('item', array('Item Type Metadata', 'overblowing utilization')); ?></p>
 	<h4>pitch production potential of instrument</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'pitch production potential of instrument')); ?></p>
-	
+	}
 <?php elseif ($category == 'chordophone'): ?>
+	{
 	<h4>string carrier design single drum</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'string carrier design single drum')); ?></p>
 	<h4>resonator design, chordophone</h4>
@@ -107,8 +110,9 @@
 	<p><?php echo metadata('item', array('Item Type Metadata', 'method of sounding')); ?></p>
 	<h4>pitches per string course</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'pitches per string course')); ?></p>
-
+	}
 <?php elseif ($category == 'idiophone'): ?>
+	{
 	<h4>basic form of sonorous object/s</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s')); ?></p>
 	<h4>sound objects per instrument and how sounded</h4>
@@ -127,8 +131,9 @@
 	<p><?php echo metadata('item', array('Item Type Metadata', 'pitch of sound produced')); ?></p>
 	<h4>sound modification</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'sound modification')); ?></p>
-	
+	}
 <?php elseif ($category == 'membranophone'): ?>
+	{
 	<h4>number of drums comprising instrument</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'number of drums comprising instrument')); ?></p>
 	<h4>shell design</h4>
@@ -145,7 +150,135 @@
 	<p><?php echo metadata('item', array('Item Type Metadata', 'sounding')); ?></p>
 	<h4>sound modifiers</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'sound modifiers')); ?></p>
+	}
+<?php endif; ?>
 
+<!-- following repeats the category features for aerophones, because I can't get the if-elseif section to work -->
+<?php if (metadata('item', array('Item Type Metadata', 'basic shape of air cavity encasementm'))): ?>
+	<h4>basic shape of air cavity encasement</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'basic shape of air cavity encasement')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'source and direction of airstream'))): ?>
+	<h4>source and direction of airstream</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'source and direction of airstream')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'mechanism to activate standing wave in air cavity'))): ?>
+	<h4>mechanism to activate standing wave in air cavity</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'mechanism to activate standing wave in air cavity')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'means of modifying shape and dimension of standing wave in air cavity'))): ?>
+	<h4>means of modifying shape and dimension of standing wave in air cavity</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'means of modifying shape and dimension of standing wave in air cavity')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'overblowing utilization'))): ?>
+	<h4>overblowing utilization</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'overblowing utilization')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'pitch production potential of instrument'))): ?>
+	<h4>pitch production potential of instrument</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'pitch production potential of instrument')); ?></p>
+<?php endif; ?>
+
+<!-- following repeats the category features for chordophones, because I can't get the if-elseif section to work -->
+<?php if (metadata('item', array('Item Type Metadata', 'string carrier design single drum'))): ?>
+	<h4>string carrier design single drum</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'string carrier design single drum')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'resonator design, chordophone'))): ?>
+	<h4>resonator design, chordophone</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'resonator design, chordophone')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'string courses'))): ?>
+	<h4>string courses</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'string courses')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'vibrational length'))): ?>
+	<h4>vibrational length</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'vibrational length')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'string tension control'))): ?>
+	<h4>string tension control</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'string tension control')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'method of sounding'))): ?>
+	<h4>method of sounding</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'method of sounding')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'pitches per string course'))): ?>
+	<h4>pitches per string course</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'pitches per string course')); ?></p>
+<?php endif; ?>
+
+<!-- following repeats the category features for idiophones, because I can't get the if-elseif section to work -->
+<?php if (metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s'))): ?>
+	<h4>basic form of sonorous object/s</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'sound objects per instrument and how sounded'))): ?>
+	<h4>sound objects per instrument and how sounded</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'sound objects per instrument and how sounded')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'resonator design'))): ?>
+	<h4>resonator design</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'resonator design')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'number of players'))): ?>
+	<h4>number of players</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'number of players')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'sounding principle'))): ?>
+	<h4>sounding principle</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'sounding principle')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'sound exciting agent'))): ?>
+	<h4>sound exciting agent</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'sound exciting agent')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'energy input motion by performer'))): ?>
+	<h4>energy input motion by performer</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'energy input motion by performer')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'pitch of sound produced'))): ?>
+	<h4>pitch of sound produced</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'pitch of sound produced')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'sound modification'))): ?>
+	<h4>sound modification</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'sound modification')); ?></p>
+<?php endif; ?>
+
+<!-- following repeats the category features for membranophones, because I can't get the if-elseif section to work -->
+<?php if (metadata('item', array('Item Type Metadata', 'number of drums comprising instrument'))): ?>
+	<h4>number of drums comprising instrument</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'number of drums comprising instrument')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'shell design'))): ?>
+	<h4>shell design</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'shell design')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'number and function of membrane'))): ?>
+	<h4>number and function of membranes</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'number and function of membranes')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'membrane design'))): ?>
+	<h4>membrane design</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'membrane design')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'membrane attachment'))): ?>
+	<h4>membrane attachment</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'membrane attachment')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'membrane tension control'))): ?>
+	<h4>membrane tension control</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'membrane tension control')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'sounding'))): ?>
+	<h4>sounding</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'sounding')); ?></p>
+<?php endif; ?>
+<?php if (metadata('item', array('Item Type Metadata', 'sound modifiers'))): ?>
+	<h4>sound modifiers</h4>
+	<p><?php echo metadata('item', array('Item Type Metadata', 'sound modifiers')); ?></p>
 <?php endif; ?>
 
 
