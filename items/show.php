@@ -154,7 +154,7 @@
 <?php endif; ?>
 
 <!-- following repeats the category features for aerophones, because I can't get the if-elseif section to work -->
-<?php if (metadata('item', array('Item Type Metadata', 'basic shape of air cavity encasementm'))): ?>
+<?php if (metadata('item', array('Item Type Metadata', 'basic shape of air cavity encasement'))): ?>
 	<h4>basic shape of air cavity encasement</h4>
 	<p><?php echo metadata('item', array('Item Type Metadata', 'basic shape of air cavity encasement')); ?></p>
 <?php endif; ?>
