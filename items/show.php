@@ -187,7 +187,7 @@
         <h3>Primary Materials</h3>
         <p><?php echo metadata('item', array('Dublin Core', 'Medium'), array('delimiter' => ', ')); ?></p>
         
-        <?php if (metadata('item', array('Dublin Core', 'Creator'))): ?>
+        <?php if (metadata('item', array('Dublin Core', 'Publisher'))): ?>
         <h3>Maker</h3>
         <p><?php echo metadata('item', array('Dublin Core', 'Publisher'), array('delimiter' => ', ')); ?></p>
         <?php endif; ?>
