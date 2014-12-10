@@ -77,7 +77,7 @@
         <p><?php echo metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?></p>
 
         <h3>Design and Playing Features</h3>
-        <p><b><i>category - </i><b>
+        <p><b><i>category - </i></b>
 	<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p>
 
 <!-- following gives the category features for aerophones -->
