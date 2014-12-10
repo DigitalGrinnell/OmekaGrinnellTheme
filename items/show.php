@@ -66,7 +66,7 @@
         <?php if (metadata('item', array('Dublin Core', 'Type'))): ?>
         <p><b><i>formation</i></b>: 
         <?php echo metadata('item', array('Dublin Core', 'Type'), array('delimiter' => ', ')); ?></p>
-    
+    	<?php endif; ?>
         <?php if (metadata('item', array('Dublin Core', 'Is Part Of'))): ?>
         <h3>Ensembles</h3>
         <p><?php echo metadata('item', array('Dublin Core', 'Is Part Of'), array('delimiter' => ', ')); ?></p>
@@ -83,10 +83,10 @@
 
 <!-- following gives the category features for aerophones -->
 <?php if (metadata('item', array('Item Type Metadata', 'air cavity design'))): ?>
-	<p><strong>air cavity design</stong>: <?php echo metadata('item', array('Item Type Metadata', 'air cavity design')); ?></p>
+	<p>air cavity design: <?php echo metadata('item', array('Item Type Metadata', 'air cavity design')); ?></p>
 <?php endif; ?>
 <?php if (metadata('item', array('Item Type Metadata', 'source and direction of airstream'))): ?>
-	<p><strong>source and direction of airstream</strong>: <?php echo metadata('item', array('Item Type Metadata', 'source and direction of airstream')); ?></p>
+	<p>source and direction of airstream: <?php echo metadata('item', array('Item Type Metadata', 'source and direction of airstream')); ?></p>
 <?php endif; ?>
 <?php if (metadata('item', array('Item Type Metadata', 'energy transducer that activates sound'))): ?>
 	<h5>energy transducer that activates sound</h5>
