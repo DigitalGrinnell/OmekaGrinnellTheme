@@ -129,6 +129,7 @@ switch ($cat) {
         break;
     case "membranophone":
         //write the membranophone features/options
+        echo "switch is working";
         glossarize('membranophone','number of drums comprising instrument');
         glossarize('membranophone','shell design');
         glossarize('membranophone','number and function of membranes');
