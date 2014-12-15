@@ -90,7 +90,6 @@
         <p><b><i>category</i></b> - 
 	<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p>
 
-<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p>
 <?php 
 
 switch (metadata('item', array('Item Type Metadata', 'Category'))) {
@@ -137,7 +136,6 @@ switch (metadata('item', array('Item Type Metadata', 'Category'))) {
         glossarize('membranophone','sound modifiers');
         break;
 }
-$glossary = array();
 
 function glossarize($category,$feature) {
         $option = metadata('item', array('Item Type Metadata', $feature));
