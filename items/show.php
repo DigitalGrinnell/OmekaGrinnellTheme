@@ -142,8 +142,8 @@ switch ($cat) {
 
 function glossarize($category,$feature) {
         echo $feature;
-        $option = (metadata('item', array('Item Type Metadata', $feature)));
-        echo '<p><a href="#" title="'.$glossary[$category][$feature]['definition'].'"><i>'.$feature.'</i> - <a href="#" title="'.$glossary[$category][$feature][$option].'">'.$option.'</a></p>';
+//        $option = (metadata('item', array('Item Type Metadata', $feature)));
+//        echo '<p><a href="#" title="'.$glossary[$category][$feature]['definition'].'"><i>'.$feature.'</i> - <a href="#" title="'.$glossary[$category][$feature][$option].'">'.$option.'</a></p>';
 }
 
 ?>
