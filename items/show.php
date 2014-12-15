@@ -139,6 +139,7 @@ switch ($cat) {
         glossarize('membranophone','sound modifiers');
         break;
 }
+echo $glossary['membranophone']['number of drums comprising instrument']['definition'];
 
 function glossarize($category,$feature) {
         $option = (metadata('item', array('Item Type Metadata', $feature), array('index' => '0','no_filter'=>true)));
