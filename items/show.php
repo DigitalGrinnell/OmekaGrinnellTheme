@@ -129,7 +129,6 @@ switch ($cat) {
         break;
     case "membranophone":
         //write the membranophone features/options
-        echo "switch is working";
         glossarize('membranophone','number of drums comprising instrument');
         glossarize('membranophone','shell design');
         glossarize('membranophone','number and function of membranes');
@@ -142,9 +141,8 @@ switch ($cat) {
 }
 
 function glossarize($category,$feature) {
-        echo $feature;
-//        $option = (metadata('item', array('Item Type Metadata', $feature)));
-//        echo '<p><a href="#" title="'.$glossary[$category][$feature]['definition'].'"><i>'.$feature.'</i> - <a href="#" title="'.$glossary[$category][$feature][$option].'">'.$option.'</a></p>';
+        $option = (metadata('item', array('Item Type Metadata', $feature), array('index' => '0','no_filter'=>true)));
+        echo '<p><a href="#" title="'.$glossary[$category][$feature]['definition'].'"><i>'.$feature.'</i> - <a href="#" title="'.$glossary[$category][$feature][$option].'">'.$option.'</a></p>';
 }
 
 ?>
