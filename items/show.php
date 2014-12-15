@@ -77,8 +77,21 @@
         <p><?php echo metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?></p>
 
         <h3>Design and Playing Features</h3>
+
+        <!-- Read definitions of terms from categories.json and populate array to be used in categorize() function -->
+        <?php 
+        $string = file_get_contents("categories.json");
+        $glossary = json_decode($string,true);
+        ?>
+
+
+        <p><b><i>category - </i></b>
+	<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p> ?>
+    <?php echo $glossary['cordophone']['definition']; ?>
+
         <p><b><i>category</i></b> - 
 	<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p>
+>>>>>>> .merge_file_BdeWed
 
 <!-- following gives the category features for aerophones -->
 <?php if (metadata('item', array('Item Type Metadata', 'air cavity design'))): ?>
