@@ -93,7 +93,7 @@
 <?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p>
 <?php 
 
-switch (metadata('item', array('Item Type Metadata', 'Category')) {
+switch (metadata('item', array('Item Type Metadata', 'Category'))) {
     case "aerophone":
         //write the aerophone features/options
         glossarize('aerophone','air cavity design');
