@@ -10,6 +10,37 @@
 <p><em>similar or related: </em> <?php echo metadata('item', array('Dublin Core', 'Relation'), array('delimiter' => ', ')); ?></p>
 <?php endif; ?>
 
+<!-- The following returns files AND FILE METADATA associated with an item. -->
+<?php if (metadata('item', 'has files')): ?>
+<div id="itemfiles" class="element">
+    <h3><?php echo __('Files'); ?></h3>
+    <?php
+	set_loop_records('files', get_current_record('item')->Files);
+	foreach(loop('files') as $file): ?>
+
+		<div class="file-display">
+			<!-- Display the file itself-->
+			<?php echo file_markup(get_current_record('file'));  ?>
+			<!-- Display the file's metadata -->
+			
+			<div class="file-metadata">
+			<?php
+			//getting file data
+			$dublin_files = all_element_texts($file, array('show_element_sets' => array ('Dublin Core'), 'return_type' => 'array'));    
+
+			/*verify if the field exist*/
+			if (isset($dublin_files['Dublin Core']['Title']) && isset($dublin_files['Dublin Core']['Description'])) :
+			?>
+				<b> <?php echo $dublin_files['Dublin Core']['Title'][0]  ?> </b> 
+				<?php echo $dublin_files['Dublin Core']['Description'][0]  ?>
+			<?php endif; ?>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+
+	<?php endforeach; ?>
+</div>
+<?php endif; ?>
 
 <!-- The following returns all of the files associated with an item. -->
     <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
