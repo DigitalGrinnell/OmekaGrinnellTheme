@@ -137,7 +137,7 @@ switch ($cat) {
         break;
     case "chordophone":
         //write the chordophone features/options
-        glossarize('chordophone','string carrier design single drum');
+        glossarize('chordophone','string carrier design');
         glossarize('chordophone','resonator design, chordophone'); 
         glossarize('chordophone','string courses');
         glossarize('chordophone','vibrational length');
@@ -148,7 +148,7 @@ switch ($cat) {
     case "idiophone":
         //write the idiophone features/options
         glossarize('idiophone','basic form of sonorous object/s');
-        glossarize('idiophone','sound objects per instrument and how sounded');
+        glossarize('idiophone','sound objects per instrument');
         glossarize('idiophone','resonator design');
         glossarize('idiophone','number of players');
         glossarize('idiophone','sounding principle');
