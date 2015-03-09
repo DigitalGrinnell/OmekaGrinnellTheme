@@ -4,7 +4,7 @@ echo head(array(
     'bodyclass' => 'exhibits show'));
 ?>
 <nav id="exhibit-pages">
-    <?php /* thislinecommentedout echo exhibit_builder_page_nav(); */ ?>
+    <?php echo exhibit_builder_page_nav(); ?>
 </nav>
 
 <h1><span class="exhibit-page"><?php echo metadata('exhibit_page', 'title'); ?></span></h1>
