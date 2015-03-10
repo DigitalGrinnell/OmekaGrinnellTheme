@@ -35,6 +35,9 @@
     <?php queue_js_file('jquery-extra-selectors'); ?>
     <?php queue_js_file('vendor/respond'); ?>
     <?php queue_js_file('globals'); ?>
+    <?php queue_js_file('vendor/masonry'); ?>
+    <?php queue_js_file('vendor/imagesloaded'); ?>
+    <?php queue_js_file('wmi'); ?>
     <?php echo head_js(); ?>
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>

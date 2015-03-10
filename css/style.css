@@ -820,6 +820,16 @@
     padding-left: 0;
   }
 
+  .file-display {
+    width:28%;
+    padding:8px 0;
+  }
+
+  audio {
+    width:100%;
+    display: block;
+  }
+
   /* !---------- Search ---------- */
   .search #search-results {
     background-color: #fff;

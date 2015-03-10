@@ -11,10 +11,30 @@
 <?php endif; ?>
 
 
+
 <!-- The following returns all of the files associated with an item. -->
     <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
-        <?php echo files_for_item(array('imageSize' => 'thumbnail')); ?>
+
+        <div id="itemfiles" class="element">
+        <?php set_loop_records('files', get_current_record('item')->Files); //get all the files for the item ?>
+        <?php foreach(loop('files') as $file): //loop through the files and display the file and it's metadata ?>
+            <div class="file-display">
+            <?php echo file_markup(get_current_record('file'), array('imageSize' => 'fullsize')); ?>
+            <?php // echo files_for_item(array('imageSize' => 'thumbnail')); ?>
+                <div class="file-metadata">
+                <?php $dublin_files = all_element_texts($file, array('show_element_sets' => array ('Dublin Core'), 'return_type' => 'array')); ?>
+                <?php if (isset($dublin_files['Dublin Core']['Title']) && isset($dublin_files['Dublin Core']['Description'])) : ?>
+                <?php echo $dublin_files['Dublin Core']['Description'][0]; ?>
+                <?php endif; ?>
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+        <?php // echo files_for_item(array('imageSize' => 'thumbnail')); ?>
+        
+
     <?php endif; ?>
+</div>
 
     <?php if ((get_theme_option('Item FileGallery') == 1) && metadata('item', 'has files')): ?>
         <h2><?php echo __('Files'); ?></h2>
