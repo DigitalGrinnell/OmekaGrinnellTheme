@@ -821,8 +821,11 @@
   }
 
   .file-display {
-    width:28%;
-    padding:8px 0;
+    display:block;
+    max-width:300px;
+    min-width: 200px;
+    width:auto;
+    padding:8px;
   }
 
   audio {

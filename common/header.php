@@ -23,7 +23,8 @@
     <!-- Stylesheets -->
     <?php
     queue_css_url('//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic|Droid+Serif:400,700');
-    queue_css_file('normalize');
+    //queue_css_file('normalize'); 
+    queue_css_file('bootstrap/css/bootstrap', 'screen');
     queue_css_file('style', 'screen');
     queue_css_file('print', 'print');
     echo head_css();
@@ -37,6 +38,7 @@
     <?php queue_js_file('globals'); ?>
     <?php queue_js_file('vendor/masonry'); ?>
     <?php queue_js_file('vendor/imagesloaded'); ?>
+    <?php queue_js_file('vendor/bootstrap'); ?>
     <?php queue_js_file('wmi'); ?>
     <?php echo head_js(); ?>
 </head>

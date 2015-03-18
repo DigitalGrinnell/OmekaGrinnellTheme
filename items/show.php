@@ -21,12 +21,6 @@
             <div class="file-display">
             <?php echo file_markup(get_current_record('file'), array('imageSize' => 'fullsize')); ?>
             <?php // echo files_for_item(array('imageSize' => 'thumbnail')); ?>
-                <div class="file-metadata">
-                <?php $dublin_files = all_element_texts($file, array('show_element_sets' => array ('Dublin Core'), 'return_type' => 'array')); ?>
-                <?php if (isset($dublin_files['Dublin Core']['Title']) && isset($dublin_files['Dublin Core']['Description'])) : ?>
-                <?php echo $dublin_files['Dublin Core']['Description'][0]; ?>
-                <?php endif; ?>
-                </div>
             </div>
 
         <?php endforeach; ?>
@@ -123,8 +117,8 @@
 <?php endif; ?>
 
 <!-- following gives the category features for chordophones -->
-<?php if (metadata('item', array('Item Type Metadata', 'string carrier design single drum'))): ?>
-	<p><b><i>string carrier design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'string carrier design single drum')); ?></p>
+<?php if (metadata('item', array('Item Type Metadata', 'string carrier design'))): ?>
+	<p><b><i>string carrier design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'string carrier design')); ?></p>
 <?php endif; ?>
 <?php if (metadata('item', array('Item Type Metadata', 'resonator design, chordophone'))): ?>
 	<p><b><i>resonator design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'resonator design, chordophone')); ?></p>
@@ -149,8 +143,8 @@
 <?php if (metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s'))): ?>
 	<p><b><i>basic form of sonorous object/s</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s')); ?></p>
 <?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sound objects per instrument and how sounded'))): ?>
-	<p><b><i>sound objects per instrument</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sound objects per instrument and how sounded')); ?></p>
+<?php if (metadata('item', array('Item Type Metadata', 'sound objects per instrument'))): ?>
+	<p><b><i>sound objects per instrument</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sound objects per instrument')); ?></p>
 <?php endif; ?>
 <?php if (metadata('item', array('Item Type Metadata', 'resonator design'))): ?>
 	<p><b><i>resonator design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'resonator design')); ?></p>
