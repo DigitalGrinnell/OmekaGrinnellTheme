@@ -45,13 +45,8 @@
  
     <!-- The following returns description and bibliography citation. -->
     <h2>Description</h2>
-    
-
-
-
-<?php echo metadata('item', array('Dublin Core', 'Description')); ?>
-    <p></p>
-    
+    <?php echo metadata('item', array('Dublin Core', 'Description')); ?>
+        
     <h2>Bibliographic Citations</h2>
     <?php echo metadata('item', array('Dublin Core', 'Bibliographic Citation'), array('delimiter' => ', ')); ?>
 
@@ -65,13 +60,13 @@
     
     <div class="element-text">
         <h3>Origins</h3>
-	<?php if (metadata('item', array('Dublin Core', 'Spatial Coverage'))): ?>
+	    <?php if (metadata('item', array('Dublin Core', 'Spatial Coverage'))): ?>
         <p><b><i>continent - </i></b>
         <?php echo metadata('item', array('Dublin Core', 'Spatial Coverage'), array('delimiter' => ' - ')); ?></p>
         <?php endif; ?>
         <?php if (metadata('item', array('Dublin Core', 'Source'))): ?>
         <p><b><i>region - </i></b>
-	<?php echo metadata('item', array('Dublin Core', 'Source'), array('delimiter' => ' - ')); ?></p>
+	    <?php echo metadata('item', array('Dublin Core', 'Source'), array('delimiter' => ' - ')); ?></p>
         <?php endif; ?>
         <?php if (metadata('item', array('Dublin Core', 'Coverage'))): ?>
         <p><b><i>nation - </i></b>
@@ -81,9 +76,21 @@
         <p><b><i>formation - </i></b>
         <?php echo metadata('item', array('Dublin Core', 'Type'), array('delimiter' => ', ')); ?></p>
     	<?php endif; ?>
+        
+        <!-- If it's part of an ensemble get the link to the ensemble slug -->
         <?php if (metadata('item', array('Dublin Core', 'Is Part Of'))): ?>
+        
+
         <h3>Ensembles</h3>
-        <p><?php echo metadata('item', array('Dublin Core', 'Is Part Of'), array('delimiter' => ', ')); ?></p>
+        <p>
+        <?php
+        $ensembles = get_record('Exhibit', array('id'=>3)); 
+        $ensemble = metadata('item', array('Dublin Core', 'Is Part Of'), array('delimiter' => ', ')); 
+        $ensemblePage = get_record('ExhibitPage', array('title'=>$ensemble));
+        ?>
+        <a href="<?php echo exhibit_builder_exhibit_uri($ensembles, $ensemblePage); ?>"><?php echo $ensemble; ?></a>
+        </p>
+        
         <?php endif; ?>
     
         <h3>Classification (Sachs-Von Hornbostel revised by 
@@ -91,108 +98,58 @@
         <p><?php echo metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?></p>
 
         <h3>Design and Playing Features</h3>
-        <p><b><i>category</i></b> - 
-	<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></p>
+        <p><b><i>category</i></b> - <a href='../../solr-search?q=facet=92_s:"<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?>"'><?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></a></p>
 
-<!-- following gives the category features for aerophones -->
-<?php if (metadata('item', array('Item Type Metadata', 'air cavity design'))): ?>
-	<p><b><i>air cavity design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'air cavity design')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'source and direction of airstream'))): ?>
-	<p><b><i>source and direction of airstream</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'source and direction of airstream')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'energy transducer that activates sound'))): ?>
-	<p><b><i>energy transducer that activates sound</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'energy transducer that activates sound')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'means of modifying shape and dimensions of standing wave in air cavity'))): ?>
-	<p><b><i>means of modifying shape and dimensions of standing wave in air cavity</i></b> - 
-	<?php echo metadata('item', array('Item Type Metadata', 'means of modifying shape and dimensions of standing wave in air cavity')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'overblowing utilization'))): ?>
-	<p><b><i>overblowing utilization</i></b> - 
-	<?php echo metadata('item', array('Item Type Metadata', 'overblowing utilization')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'pitch production'))): ?>
-	<p><b><i>pitch production</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'pitch production')); ?></p>
-<?php endif; ?>
 
-<!-- following gives the category features for chordophones -->
-<?php if (metadata('item', array('Item Type Metadata', 'string carrier design'))): ?>
-	<p><b><i>string carrier design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'string carrier design')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'resonator design, chordophone'))): ?>
-	<p><b><i>resonator design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'resonator design, chordophone')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'string courses'))): ?>
-	<p><b><i>string courses</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'string courses')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'vibrational length'))): ?>
-	<p><b><i>vibrational length</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'vibrational length')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'string tension control'))): ?>
-	<p><b><i>string tension control</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'string tension control')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'method of sounding'))): ?>
-	<p><b><i>method of sounding</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'method of sounding')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'pitches per string course'))): ?>
-	<p><b><i>pitches per string course</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'pitches per string course')); ?></p>
-<?php endif; ?>
+        
 
-<!-- following gives the category features for idiophones -->
-<?php if (metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s'))): ?>
-	<p><b><i>basic form of sonorous object/s</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'basic form of sonorous object/s')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sound objects per instrument'))): ?>
-	<p><b><i>sound objects per instrument</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sound objects per instrument')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'resonator design'))): ?>
-	<p><b><i>resonator design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'resonator design')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'number of players'))): ?>
-	<p><b><i>number of players</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'number of players')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sounding principle'))): ?>
-	<p><b><i>sounding principle</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sounding principle')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sound exciting agent'))): ?>
-	<p><b><i>sound exciting agent</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sound exciting agent')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'energy input motion by performer'))): ?>
-	<p><b><i>energy input motion by performer</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'energy input motion by performer')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'pitch of sound produced'))): ?>
-	<p><b><i>pitch of sound produced</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'pitch of sound produced')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sound modification'))): ?>
-	<p><b><i>sound modification</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sound modification')); ?></p>
-<?php endif; ?>
+        <?php 
+        $aerophoneFeatures = array('air cavity design', 'source and direction of airstream', 'energy transducer that activates sound', 'means of modifying shape and dimensions of standing wave in air cavity', 'means of modifying shape and dimensions of standing wave in air cavity',  'overblowing utilization', 'pitch production');
+        $chordophoneFeatures = array('string carrier design', 'resonator design, chordophone', 'string courses', 'vibrational length', 'string tension control', 'method of sounding', 'pitches per string course');
+        $ideophoneFeatures = array('basic form of sonorous object/s', 'sound objects per instrument', 'resonator design', 'number of players', 'sounding principle', 'sound exciting agent', 'energy input motion by performer', 'pitch of sound produced', 'sound modification');
+        $membranophoneFeatures = array('number of drums comprising instrument', 'shell design', 'number and function of membranes', 'membrane design', 'membrane attachment', 'membrane tension control', 'sounding', 'sound modifiers');
+        
+        switch (metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', '))) {
+            case "aerophone":
+            //list and link aerophone features
+            foreach ($aerophoneFeatures as $feature) {
+                ?>
+                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
+                <?php
+            }
+            break;
 
-<!-- following gives the category features for membranophones -->
-<?php if (metadata('item', array('Item Type Metadata', 'number of drums comprising instrument'))): ?>
-	<p><b><i>number of drums comprising instrument</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'number of drums comprising instrument')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'shell design'))): ?>
-	<p><b><i>shell design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'shell design')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'number and function of membranes'))): ?>
-	<p><b><i>number and function of membranes</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'number and function of membranes')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'membrane design'))): ?>
-	<p><b><i>membrane design</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'membrane design')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'membrane attachment'))): ?>
-	<p><b><i>membrane attachment</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'membrane attachment')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'membrane tension control'))): ?>
-	<p><b><i>membrane tension control</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'membrane tension control')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sounding'))): ?>
-	<p><b><i>sounding</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sounding')); ?></p>
-<?php endif; ?>
-<?php if (metadata('item', array('Item Type Metadata', 'sound modifiers'))): ?>
-	<p><b><i>sound modifiers</i></b> - <?php echo metadata('item', array('Item Type Metadata', 'sound modifiers')); ?></p>
-<?php endif; ?>
+            case "chordophone":
+            //list and link chordophone features
+            foreach ($chordophoneFeatures as $feature) {
+                ?>
+                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
+                <?php
+            }
+            break;
+
+            case "ideophone":
+            //list and link ideophone features
+            foreach ($ideophoneFeatures as $feature) {
+                ?>
+                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
+                <?php
+            }
+            break;
+
+            case "membranophone":
+            //list and link membranophone features
+            foreach ($membranophoneFeatures as $feature) {
+                ?>
+                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
+                <?php
+            }
+            break;
+        }
+
+        ?>
+
+
 
 
         <h3>Dimensions</h3>
