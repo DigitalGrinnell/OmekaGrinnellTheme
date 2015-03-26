@@ -84,11 +84,13 @@
         <h3>Ensembles</h3>
         <p>
         <?php
-        $ensembles = get_record('Exhibit', array('id'=>3)); 
-        $ensemble = metadata('item', array('Dublin Core', 'Is Part Of'), array('delimiter' => ', ')); 
-        $ensemblePage = get_record('ExhibitPage', array('title'=>$ensemble));
-        ?>
-        <a href="<?php echo exhibit_builder_exhibit_uri($ensembles, $ensemblePage); ?>"><?php echo $ensemble; ?></a>
+        $ensemblesExhibit = get_db()->getTable('Exhibit')->find(3); 
+        $isPartOfEnsembles = metadata('item', array('Dublin Core', 'Is Part Of'), array('delimiter' => ', ')); 
+        $ensembles = explode(', ', $isPartOfEnsembles);
+        foreach ($ensembles as $ensemble) {
+            $ensemblePage = get_record('ExhibitPage', array('title'=>$ensemble));
+            echo "<a href='".exhibit_builder_exhibit_uri($ensemblesExhibit, $ensemblePage)."'>".$ensemble."</a><br />";
+        }?>
         </p>
         
         <?php endif; ?>
