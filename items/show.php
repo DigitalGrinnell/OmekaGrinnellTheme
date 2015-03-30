@@ -100,56 +100,18 @@
         <p><?php echo metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?></p>
 
         <h3>Design and Playing Features</h3>
-        <p><b><i>category</i></b> - <a href='../../solr-search?q=facet=92_s:"<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?>"'><?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></a></p>
+        <p><b><i>category</i></b> - <a href='../../../solr-search?q=facet=92_s:"<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?>"'><?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></a></p>
 
 
         
 
         <?php 
-        $aerophoneFeatures = array('air cavity design', 'source and direction of airstream', 'energy transducer that activates sound', 'means of modifying shape and dimensions of standing wave in air cavity', 'means of modifying shape and dimensions of standing wave in air cavity',  'overblowing utilization', 'pitch production');
-        $chordophoneFeatures = array('string carrier design', 'resonator design, chordophone', 'string courses', 'vibrational length', 'string tension control', 'method of sounding', 'pitches per string course');
-        $ideophoneFeatures = array('basic form of sonorous object/s', 'sound objects per instrument', 'resonator design', 'number of players', 'sounding principle', 'sound exciting agent', 'energy input motion by performer', 'pitch of sound produced', 'sound modification');
-        $membranophoneFeatures = array('number of drums comprising instrument', 'shell design', 'number and function of membranes', 'membrane design', 'membrane attachment', 'membrane tension control', 'sounding', 'sound modifiers');
-        
-        switch (metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', '))) {
-            case "aerophone":
-            //list and link aerophone features
-            foreach ($aerophoneFeatures as $feature) {
-                ?>
-                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
-                <?php
-            }
-            break;
-
-            case "chordophone":
-            //list and link chordophone features
-            foreach ($chordophoneFeatures as $feature) {
-                ?>
-                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
-                <?php
-            }
-            break;
-
-            case "ideophone":
-            //list and link ideophone features
-            foreach ($ideophoneFeatures as $feature) {
-                ?>
-                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
-                <?php
-            }
-            break;
-
-            case "membranophone":
-            //list and link membranophone features
-            foreach ($membranophoneFeatures as $feature) {
-                ?>
-                <p><b><i><?php echo $feature ?></i></b> - <a href='../../solr-search?q="<?php echo metadata('item', array('Item Type Metadata', $feature)); ?>"'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
-                <?php
-            }
-            break;
-        }
-
-        ?>
+        $instrumentFeatures = array('air cavity design', 'source and direction of airstream', 'energy transducer that activates sound', 'means of modifying shape and dimensions of standing wave in air cavity', 'means of modifying shape and dimensions of standing wave in air cavity',  'overblowing utilization', 'pitch production','string carrier design', 'resonator design, chordophone', 'string courses', 'vibrational length', 'string tension control', 'method of sounding', 'pitches per string course','basic form of sonorous object/s', 'sound objects per instrument', 'resonator design', 'number of players', 'sounding principle', 'sound exciting agent', 'energy input motion by performer', 'pitch of sound produced', 'sound modification','number of drums comprising instrument', 'shell design', 'number and function of membranes', 'membrane design', 'membrane attachment', 'membrane tension control', 'sounding', 'sound modifiers');
+        foreach ($instrumentFeatures as $feature) {
+            if (metadata('item', array('Item Type Metadata', $feature))) {
+                ?><p><b><i><?php echo $feature ?></i></b> - <?php echo metadata('item', array('Item Type Metadata', $feature)); ?></p>
+                <?php }
+            }?>
 
 
 
