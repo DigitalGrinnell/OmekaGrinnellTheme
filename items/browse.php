@@ -26,22 +26,21 @@ $sortLinks[__('Date Added')] = 'added';
 
 <?php endif; ?>
 
-<?php foreach (loop('items') as $item): ?>
-<div class="item hentry">
-    <div class="item-meta">
-    <?php if (metadata('item', 'has files')): ?>
-    <div class="item-img">
-        <?php echo link_to_item(item_image('square_thumbnail')); ?><br />
-        <?php echo link_to_item(metadata('item', array('Dublin Core', 'Title')), array('class'=>'permalink')); ?>
-    </div>
-    <?php endif; ?>
+<?php 
+$c=0;
+foreach (loop('items') as $item): 
+    if ($c==0): echo '<div class="row">'; endif;
+    echo '<div class="col-md-3 col-sm-6 text-center">';
+    echo link_to_item(item_image('square_thumbnail'));
+    echo '<br />';
+    echo link_to_item(metadata('item', array('Dublin Core', 'Title')), array('class'=>'permalink'));
+    fire_plugin_hook('public_items_browse_each', array('view' => $this, 'item' =>$item));
+    echo '</div>';
+    if ($c==3): echo '</div>'; $c=0; else: $c++; endif;
+endforeach;
+if ($c<=3): echo '</div>'; endif;
+?>
 
-
-    <?php fire_plugin_hook('public_items_browse_each', array('view' => $this, 'item' =>$item)); ?>
-
-    </div><!-- end class="item-meta" -->
-</div><!-- end class="item hentry" -->
-<?php endforeach; ?>
 
 <?php echo pagination_links(); ?>
 
@@ -53,3 +52,4 @@ $sortLinks[__('Date Added')] = 'added';
 <?php fire_plugin_hook('public_items_browse', array('items'=>$items, 'view' => $this)); ?>
 
 <?php echo foot(); ?>
+
