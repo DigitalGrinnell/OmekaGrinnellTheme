@@ -29,7 +29,7 @@ $sortLinks[__('Date Added')] = 'added';
 <?php 
 $c=0;
 foreach (loop('items') as $item): 
-    if ($c==0): echo '<div class="row">'; endif;
+    if ($c==0): echo '<div class="row browse-row">'; endif;
     echo '<div class="col-md-3 col-sm-6 text-center">';
     echo link_to_item(item_image('square_thumbnail'));
     echo '<br />';
