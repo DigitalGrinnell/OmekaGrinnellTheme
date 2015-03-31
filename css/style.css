@@ -850,6 +850,7 @@
 
   .solr-results-row {
     float:left;
+    width:100%;
   }
 
 
@@ -870,7 +871,6 @@
   .search #search-results th:last-of-type, .search #search-results td:last-of-type {
     border-right: 0;
   }
-
   #no-results {
     clear: both;
   }
