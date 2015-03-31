@@ -25,7 +25,7 @@ $sortLinks[__('Date Added')] = 'added';
 </div>
 
 <?php endif; ?>
-
+<div id="search-results" class="clearfix">
 <?php 
 $c=0;
 foreach (loop('items') as $item): 
@@ -41,7 +41,7 @@ endforeach;
 if ($c<=3): echo '</div>'; endif;
 ?>
 
-
+</div>
 <?php echo pagination_links(); ?>
 
 <div id="outputs">

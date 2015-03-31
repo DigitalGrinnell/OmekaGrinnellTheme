@@ -841,7 +841,7 @@
     overflow: auto;
   }
 
-  .browse-row {
+  #content .browse-row {
     border-top: 0px none;
     padding: 0 12px 0.75em 12px;
     clear:both;
@@ -2024,6 +2024,7 @@
 
   #search-results {
     width: 100%;
+    clear: both;
   }
 
   #search-filters, #item-filters {
