@@ -60,18 +60,24 @@
     
     <div class="element-text">
         <h3>Origins</h3>
-	    <?php if (metadata('item', array('Dublin Core', 'Spatial Coverage'))): ?>
-        <p><b><i>continent - </i></b>
-        <?php echo metadata('item', array('Dublin Core', 'Spatial Coverage'), array('delimiter' => ' - ')); ?></p>
+	    <?php if (metadata('item', array('Dublin Core', 'Spatial Coverage'))): $continent = metadata('item', array('Dublin Core', 'Spatial Coverage')); ?>
+            <p><b><i>continent - </i></b>
+            <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'81_s:"'.$continent.'"')).'">'.$continent.'</a>'; ?></p>
         <?php endif; ?>
-        <?php if (metadata('item', array('Dublin Core', 'Source'))): ?>
+
+
+        <?php if (metadata('item', array('Dublin Core', 'Source'))): $region = metadata('item', array('Dublin Core', 'Source')); ?>
         <p><b><i>region - </i></b>
-	    <?php echo metadata('item', array('Dublin Core', 'Source'), array('delimiter' => ' - ')); ?></p>
+	    <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'48_s:"'.$region.'"')).'">'.$region.'</a>'; ?></p>
         <?php endif; ?>
-        <?php if (metadata('item', array('Dublin Core', 'Coverage'))): ?>
+
+
+        <?php if (metadata('item', array('Dublin Core', 'Coverage'))): $coverage = metadata('item', array('Dublin Core', 'Coverage')); ?>
         <p><b><i>nation - </i></b>
-        <?php echo metadata('item', array('Dublin Core', 'Coverage'), array('delimiter' => ', ')); ?></p>
+        <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'38_s:"'.$coverage.'"')).'">'.$coverage.'</a>'; ?></p>
         <?php endif; ?>
+        
+
         <?php if (metadata('item', array('Dublin Core', 'Type'))): ?>
         <p><b><i>formation - </i></b>
         <?php echo metadata('item', array('Dublin Core', 'Type'), array('delimiter' => ', ')); ?></p>
@@ -100,7 +106,10 @@
         <p><?php echo metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?></p>
 
         <h3>Design and Playing Features</h3>
-        <p><b><i>category</i></b> - <a href='../../../solr-search?q=facet=92_s:"<?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?>"'><?php echo metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?></a></p>
+        <?php $category = metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?>
+        <p><b><i>category -</i></b> 
+        <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'92_s:"'.$category.'"')).'">'.$category.'</a>'; ?></p>
+        </p>
 
 
         
