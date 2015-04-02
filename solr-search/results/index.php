@@ -61,7 +61,23 @@
 
   <h2><?php echo __('Limit your search'); ?></h2>
 
-  <?php foreach ($results->facet_counts->facet_fields as $name => $facets): ?>
+  <?php 
+
+    function cmp($a, $b) 
+    {
+       $facet_order=array('92_S', '81_s', '48_s', '38_s'); //category, continent, region, nation
+       $pos1=array_search ($a, $facet_order);
+       $pos2=array_search ($b, $facet_order);
+       if ($pos1==$pos2)
+           return 0;
+       else
+          return ($pos1 < $pos2 ? -1 : 1);
+    }
+    $fields = $results->facet_counts->facet_fields; 
+    $fields_array=get_object_vars($fields);
+    uasort($fields_array, 'cmp');
+    
+    foreach ($fields_array as $name => $facets): ?>
 
     <!-- Does the facet have any hits? -->
     <?php if (count(get_object_vars($facets))): ?>
