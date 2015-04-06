@@ -62,10 +62,10 @@
   <h2><?php echo __('Limit your search'); ?></h2>
 
   <?php 
-
+    $displayfacets=array('92_s', '81_s', '48_s', '38_s'); //category, continent, region, nation
     function cmp($a, $b) 
     {
-       $facet_order=array('92_S', '81_s', '48_s', '38_s'); //category, continent, region, nation
+       $facet_order=array('92_s', '81_s', '48_s', '38_s'); //category, continent, region, nation
        $pos1=array_search ($a, $facet_order);
        $pos2=array_search ($b, $facet_order);
        if ($pos1==$pos2)
@@ -77,8 +77,8 @@
     $fields_array=get_object_vars($fields);
     uasort($fields_array, 'cmp');
     
-    foreach ($fields_array as $name => $facets): ?>
-
+    foreach ($fields_array as $name => $facets): 
+     if (in_array($name, $displayfacets)) : ?>
     <!-- Does the facet have any hits? -->
     <?php if (count(get_object_vars($facets))): ?>
 
@@ -107,13 +107,14 @@
       </ul>
 
     <?php endif; ?>
+  <?php endif; ?>
 
   <?php endforeach; ?>
 </div>
 
 
 <!-- Results. -->
-<div id="solr-results">
+<div id="solr-results" class="container-fluid">
 
   <!-- Number found. -->
   <h2 id="num-found">
@@ -124,7 +125,7 @@
     $url = SolrSearch_Helpers_View::getDocumentUrl($doc); 
     $imgHtml = SolrSearch_Helpers_View::getDocumentImg($doc, 'square_thumbnail');
     if ($c==0): echo '<div class="row solr-results-row">'; endif;
-    echo '<div class="result col-md-3 col-sm-6 text-center">';
+    echo '<div class="result col-lg-3 col-md-6 text-center" style="overflow:hidden;">';
     echo '<a href="'.$url.'">'.$imgHtml.'</a><br />';
       $title = is_array($doc->title) ? $doc->title[0] : $doc->title;
                 if (empty($title)) {

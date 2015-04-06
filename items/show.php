@@ -118,7 +118,11 @@
         $instrumentFeatures = array('air cavity design', 'source and direction of airstream', 'energy transducer that activates sound', 'means of modifying shape and dimensions of standing wave in air cavity', 'means of modifying shape and dimensions of standing wave in air cavity',  'overblowing utilization', 'pitch production','string carrier design', 'resonator design, chordophone', 'string courses', 'vibrational length', 'string tension control', 'method of sounding', 'pitches per string course','basic form of sonorous object/s', 'sound objects per instrument', 'resonator design', 'number of players', 'sounding principle', 'sound exciting agent', 'energy input motion by performer', 'pitch of sound produced', 'sound modification','number of drums comprising instrument', 'shell design', 'number and function of membranes', 'membrane design', 'membrane attachment', 'membrane tension control', 'sounding', 'sound modifiers');
         foreach ($instrumentFeatures as $feature) {
             if (metadata('item', array('Item Type Metadata', $feature))) {
-                ?><p><b><i><?php echo $feature ?></i></b> - <?php echo metadata('item', array('Item Type Metadata', $feature)); ?></p>
+                $facetid = get_db()->getTable('SolrSearchField')->findByLabel($feature);
+                $facetstr = 'solr-search/?q=*&facet=' . $facetid->element_id . '_s:"' . metadata('item', array('Item Type Metadata', $feature)) . '"';
+                //echo $facetstr;
+                $faceturl = url($facetstr);
+                ?><p><b><i><?php echo $feature ?></i></b> - <a href='<?php echo $faceturl; ?>'><?php echo metadata('item', array('Item Type Metadata', $feature)); ?></a></p>
                 <?php }
             }?>
 
