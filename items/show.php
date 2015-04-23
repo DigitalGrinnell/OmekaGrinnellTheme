@@ -80,7 +80,8 @@
 
         <?php if (metadata('item', array('Dublin Core', 'Type'))): ?>
         <p><b><i>formation - </i></b>
-        <?php echo metadata('item', array('Dublin Core', 'Type'), array('delimiter' => ', ')); ?></p>
+        <?php $formation = metadata('item', array('Dublin Core', 'Type'), array('delimiter' => ', ')); ?>
+        <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'51_s:"'.$formation.'"')).'">'.$formation.'</a>'; ?></p>
     	<?php endif; ?>
         
         <!-- If it's part of an ensemble get the link to the ensemble slug -->
@@ -103,13 +104,16 @@
     
         <h3>Classification (Sachs-Von Hornbostel revised by 
             <a href="http://www.mimo-international.com/vocabulary.html">MIMO</a>)</h3>
-        <p><?php echo metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?></p>
+        <p>
+        <?php $classification = metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?>
+        <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'49_s:"'.$classification.'"')).'">'.$classification.'</a>'; ?></p>
+        </p>
 
         <h3>Design and Playing Features</h3>
         <?php $category = metadata('item', array('Item Type Metadata', 'Category'), array('delimiter' => ', ')); ?>
         <p><b><i>category -</i></b> 
         <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'92_s:"'.$category.'"')).'">'.$category.'</a>'; ?></p>
-        </p>
+        
 
 
         
@@ -133,7 +137,17 @@
         <p><?php echo metadata('item', array('Dublin Core', 'Format'), array('delimiter' => ', ')); ?></p>
     
         <h3>Primary Materials</h3>
-        <p><?php echo metadata('item', array('Dublin Core', 'Medium'), array('delimiter' => ', ')); ?></p>
+        <?php $materials = explode(', ', metadata('item', array('Dublin Core', 'Medium'), array('delimiter' => ', '))); ?>
+        <p>
+        <?php 
+        $i=0;
+        foreach ($materials as $material) :
+            echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'79_s:"'.$material.'"')).'">'.$material.'</a>';
+            if ($i != (count($materials)-1)) :
+                echo ', ';
+            endif;
+        endforeach;
+        ?></p>
         
         <?php if (metadata('item', array('Dublin Core', 'Publisher'))): ?>
         <h3>Maker</h3>
