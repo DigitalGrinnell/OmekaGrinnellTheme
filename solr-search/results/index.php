@@ -75,10 +75,16 @@
     }
     $fields = $results->facet_counts->facet_fields; 
     $fields_array=get_object_vars($fields);
+    
+    foreach ($fields_array as $name => $facets) :
+      if (!in_array($name, $displayfacets)):
+        unset($fields_array[$name]);
+      endif;
+    endforeach;
+
     uasort($fields_array, 'cmp');
     
-    foreach ($fields_array as $name => $facets): 
-     if (in_array($name, $displayfacets)) : ?>
+    foreach ($fields_array as $name => $facets): ?> 
     <!-- Does the facet have any hits? -->
     <?php if (count(get_object_vars($facets))): ?>
 
@@ -106,7 +112,6 @@
         <?php endforeach; ?>
       </ul>
 
-    <?php endif; ?>
   <?php endif; ?>
 
   <?php endforeach; ?>
