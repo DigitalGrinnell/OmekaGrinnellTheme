@@ -115,7 +115,20 @@
             <a href="http://www.mimo-international.com/vocabulary.html">MIMO</a>)</h3>
         <p>
         <?php $classification = metadata('item', array('Dublin Core', 'Subject'), array('delimiter' => ', ')); ?>
-        <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'49_s:"'.$classification.'"')).'">'.$classification.'</a>'; ?></p>
+        <?php echo '<a href="'.url('/solr-search', array('q'=>'*', 'facet'=>'49_s:"'.$classification.'"')).'">'.$classification.'</a>:'; ?>
+        <?php 
+            $db = get_db();
+            $select = $db->select()
+                         ->from('wmi.mimo')
+                         ->where('class = ?', $classification);
+            $stmt = $db->query($select);
+            $result = $stmt->fetchAll();
+            print($result[0]['definition']);
+        ?>
+        </p>
+
+
+
         </p>
 
         <h3>Design and Playing Features</h3>
