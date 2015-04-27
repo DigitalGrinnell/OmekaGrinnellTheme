@@ -17,15 +17,24 @@
 
         <div id="itemfiles" class="element">
         <?php set_loop_records('files', get_current_record('item')->Files); //get all the files for the item ?>
-        <?php foreach(loop('files') as $file): //loop through the files and display the file and it's metadata ?>
-            <div class="file-display">
+        <?php $f = 0; ?>
+        <div class="row">
+        <?php foreach(loop('files') as $file): //loop through the files and display the file and it's metadata 
+
+            if($f % 4 == 0) : ?>
+                </div><div class="row">
+            <?php endif; ?>
+            
+            <div class="file-display col-md-3">
             <?php echo file_markup(get_current_record('file'), array('imageSize' => 'fullsize')); ?>
-            <?php // echo files_for_item(array('imageSize' => 'thumbnail')); ?>
+            <?php echo metadata('file', array('Dublin Core', 'Alternative Title')); ?>
+            <?php $f++;?>
             </div>
 
         <?php endforeach; ?>
         <?php // echo files_for_item(array('imageSize' => 'thumbnail')); ?>
-        
+        <!-- row div -->
+        </div>
 
     <?php endif; ?>
 </div>

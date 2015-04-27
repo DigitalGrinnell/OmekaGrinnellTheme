@@ -680,6 +680,11 @@
     padding-left: 1em;
   }
 
+  .audio {
+    padding: 4px;
+    border:thin solid black;
+  }
+
   /* !---------- Home ---------- */
   #home #content div .items-list .item {
     border-top: 1px solid #dfe2e2;
@@ -826,6 +831,7 @@
     min-width: 200px;
     width:auto;
     padding:8px;
+    text-align: center;
   }
 
   audio {
