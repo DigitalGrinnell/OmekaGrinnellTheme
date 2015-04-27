@@ -125,7 +125,7 @@
   <h2 id="num-found">
     <?php echo $results->response->numFound; ?> results
   </h2>
-
+  <?php echo pagination_links(); ?>
   <?php $c=0; foreach ($results->response->docs as $doc):
     $url = SolrSearch_Helpers_View::getDocumentUrl($doc); 
     $imgHtml = SolrSearch_Helpers_View::getDocumentImg($doc, 'square_thumbnail');
@@ -143,19 +143,9 @@
   if ($c<=3): echo '</div>'; endif;
   ?>
 
-      <!-- Highlighting. -->
-      <?php if (get_option('solr_search_hl')): ?>
-        <ul class="hl">
-          <?php foreach($results->highlighting->{$doc->id} as $field): ?>
-            <?php foreach($field as $hl): ?>
-              <li class="snippet"><?php echo strip_tags($hl, '<em>'); ?></li>
-            <?php endforeach; ?>
-          <?php endforeach; ?>
-        </ul>
-      <?php endif; ?>
   
   </div>
-  <?php echo pagination_links(); ?>
+  
 
 </div>
 

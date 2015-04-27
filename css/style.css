@@ -237,7 +237,7 @@
     margin: 0 0 1.5em;
   }
   .pagination li {
-    display: inline-block;
+    display: inline-flex;
     margin-right: 5px;
   }
   .pagination input[type=text] {
