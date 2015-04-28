@@ -54,8 +54,9 @@
                 <?php echo search_form(array('show_advanced' => true)); ?>
             </div>
             <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-        </header>
 
+        </header>
+        <div id="instrument-banner"></div>
         <nav class="top">
             <?php echo public_nav_main(); ?>
         </nav>

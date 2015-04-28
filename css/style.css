@@ -229,7 +229,17 @@
     width: auto;
     margin-right: 16px;
   }
+  /*  !-- Instrument Banner -----------*/
 
+  #instrument-banner {
+    width:100%;
+    display: block;
+    background-image: url("instrument-banner.png");
+    background-repeat: no-repeat;
+    padding: 36px;
+    clear: both;
+
+  }
   /* !---------- Pagination ---------- */
   .pagination {
     list-style-type: none;
