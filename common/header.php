@@ -41,10 +41,11 @@
     <?php queue_js_file('vendor/bootstrap'); ?>
     <?php queue_js_file('wmi'); ?>
     <?php echo head_js(); ?>
-    <?php include_once("analytics.php") ?>
+
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
     <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
+    <?php include_once("analytics.php") ?>
     <div id="wrap">
         <header>
             <div id="site-title">
