@@ -11,7 +11,7 @@
 <?php if (get_theme_option('Display Featured Item') !== '0'): ?>
 <!-- Featured Item -->
 <div id="featured-item">
-    <h2><?php echo __('Featured Item'); ?></h2>
+    <h2><?php echo __('Featured Instrument'); ?></h2>
     <?php echo random_featured_items(1); ?>
 </div><!--end featured-item-->
 <?php endif; ?>
