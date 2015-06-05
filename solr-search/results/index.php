@@ -140,8 +140,9 @@
     echo '</div>';
     if ($c==3): echo '</div>'; $c=0; else: $c++; endif;
   endforeach;
-  if ($c<=3): echo '</div>'; endif;
+  if ($c<=3): echo pagination_links().'</div>'; endif;
   ?>
+
 
   
   </div>
