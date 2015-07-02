@@ -57,7 +57,8 @@
 <?php endif; ?>
 
 <!-- Facets. -->
-<div id="solr-facets">
+
+<div id="solr-facets" class="col-sm-12 col-md-4 col-lg-3" style="box-shadow:none;">
 
   <h2><?php echo __('Limit your search'); ?></h2>
 
@@ -119,7 +120,7 @@
 
 
 <!-- Results. -->
-<div id="solr-results" class="container-fluid">
+<div id="solr-results" class="container-fluid col-sm-12 col-md-8 col-lg-9">
 
   <!-- Number found. -->
   <h2 id="num-found">
@@ -149,7 +150,7 @@
   </div>
   
 
-</div>
+
 
 
 
