@@ -53,7 +53,7 @@
 <div id="primary">
  
     <!-- The following returns description and bibliography citation. -->
-    <h2>Description</h2>
+    <h2>Overview</h2>
     <?php echo metadata('item', array('Dublin Core', 'Description')); ?>
         
     <h2>Bibliographic Citations</h2>
